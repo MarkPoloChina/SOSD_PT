@@ -1,7 +1,5 @@
 # bdu
 
-> y
-
 ## Build Setup
 
 ``` bash

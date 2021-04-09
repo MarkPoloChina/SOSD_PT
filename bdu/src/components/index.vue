@@ -24,6 +24,7 @@
 
 <script>
 import ImgCutter from 'vue-img-cutter'
+import axios from 'axios'
 export default {
   name: 'index',
   data () {
@@ -33,7 +34,19 @@ export default {
   },
   methods: {
     submit () {
-      return 0
+      // var i
+      var formdata = new FormData(this.files)
+      // for (i = 0; i < this.files.length; i++) {
+      //   formdata.append('files', this.files)
+      // }
+      axios({
+        method: 'post',
+        url: 'localhost:8088/upload',
+        data: formdata,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
     },
     cutDown (event) {
       this.files.push(event.file)
