@@ -34,14 +34,15 @@ export default {
   },
   methods: {
     submit () {
-      // var i
-      var formdata = new FormData(this.files)
-      // for (i = 0; i < this.files.length; i++) {
-      //   formdata.append('files', this.files)
-      // }
+      if (this.files.length === 0) { return }
+      var i
+      var formdata = new FormData()
+      for (i = 0; i < this.files.length; i++) {
+        formdata.append('files', this.files[i])
+      }
       axios({
         method: 'post',
-        url: 'localhost:8088/upload',
+        url: 'http://localhost:5000/bdu/upload',
         data: formdata,
         headers: {
           'Content-Type': 'multipart/form-data'
